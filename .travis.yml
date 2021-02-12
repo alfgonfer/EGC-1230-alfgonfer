@@ -16,7 +16,7 @@ install:
   - pip install codacy-coverage
 script:
   - cd decide
-  - coverage run --branch --source=. ./manage.py test --keepdb
+  - coverage run --branch --source=. ./manage.py test census
   - coverage xml
   - python-codacy-coverage -r coverage.xml
 notifications:
@@ -24,6 +24,7 @@ notifications:
   recipients:
    alfgonfer@alum.us.es
   on_success: never
+  on_failure: always
   
   
   
