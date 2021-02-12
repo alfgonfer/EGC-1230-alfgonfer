@@ -13,6 +13,16 @@ python:
   - "3."
 install:
   - pip install -r requirements.txt
+  - pip install codacy-coverage
 script:
   - cd decide
-  - python ./manage.py test census
+  - coverage run --branch --source=. ./manage.py test --keepdb
+  - coverage xml
+  - python-codacy-coverage -r coverage.xml
+notifications:
+ email:
+  recipients:
+   alfgonfer@alum.us.es
+  on_success: never
+  on_failure: always
+   
